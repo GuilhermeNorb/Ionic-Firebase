@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Form
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="text-align:center;">Formulario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form *ngIf="!this.compatible" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label position="floating" aria-label="Email">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="email" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="password" type="text"></ion-input>
+        </ion-item>
+        <ion-button block color="primary" type="submit" [disabled]="loginForm.invalid">
+          Login
+        </ion-button>
+      </form>
+      <ion-label *ngIf="this.compatible">Logado</ion-label>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let item of user_login">
+    <ion-card-header>
+      <ion-card-subtitle>Usuarios logado</ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Email:{{item.email}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+ 
+</ion-content>
